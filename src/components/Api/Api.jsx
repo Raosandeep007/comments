@@ -1,55 +1,54 @@
+const url = "https://shadow-glittery-bosworth.glitch.me/comments";
 export const getComments = async () => {
-  return [
-    {
-      id: "1",
-      body: "First comment",
-      username: "Jack",
-      userId: "1",
-      parentId: null,
-      createdAt: "2021-08-16T23:00:33.010+02:00",
-    },
-    {
-      id: "2",
-      body: "Second comment",
-      username: "John",
-      userId: "2",
-      parentId: null,
-      createdAt: "2021-08-16T23:00:33.010+02:00",
-    },
-    {
-      id: "3",
-      body: "First comment first child",
-      username: "John",
-      userId: "2",
-      parentId: "1",
-      createdAt: "2021-08-16T23:00:33.010+02:00",
-    },
-    {
-      id: "4",
-      body: "Second comment second child",
-      username: "John",
-      userId: "2",
-      parentId: "2",
-      createdAt: "2021-08-16T23:00:33.010+02:00",
-    },
-  ];
+  try {
+    let res = await fetch(url);
+    let data = await res.json();
+    return data;
+  } catch (error) {
+    console.log("error:", error);
+  }
 };
 
 export const createComment = async (text, parentId = null) => {
-  return {
-    id: Math.random().toString(36).substr(2, 9),
+  const payload = {
     body: text,
     parentId,
-    userId: "1",
-    username: "John",
+    userId: "7",
+    username: "sandeep",
     createdAt: new Date().toISOString(),
   };
+  await fetch(url, {
+    method: "POST",
+    body: JSON.stringify(payload),
+
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 };
 
-export const updateComment = async (text) => {
-  return { text };
+export const updateComment = async (text, id) => {
+  const payload = {
+    body: text,
+    userId: "7",
+    username: "sandeep",
+    createdAt: new Date().toISOString(),
+  };
+  await fetch(`https://shadow-glittery-bosworth.glitch.me/comments/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify(payload),
+
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 };
 
-export const deleteComment = async () => {
-  return {};
+export const deleteComment = async (id) => {
+  await fetch(`https://shadow-glittery-bosworth.glitch.me/comments/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 };

@@ -12,11 +12,11 @@ function Comment({
   parentId = null,
   addComment,
 }) {
-  const fiveMinutes = 300000;
-  const timePassed = new Date() - new Date(comment.createdAt) > fiveMinutes;
+  // const fiveMinutes = 100;
+  // const timePassed = new Date() - new Date(comment.createdAt) > fiveMinutes;
   const canReplay = Boolean(currentUserId);
-  const canEdit = currentUserId === comment.userId && !timePassed;
-  const canDelete = currentUserId === comment.userId && !timePassed;
+  const canEdit = currentUserId === comment.userId;
+  const canDelete = currentUserId === comment.userId;
   const createdAt = new Date(comment.createdAt).toLocaleDateString();
   const isReplying =
     activeComment &&
@@ -30,7 +30,7 @@ function Comment({
   return (
     <div className="comment">
       <div className="comment-image-container">
-        <img src="/user-icon.png" />
+        <img src="https://ca.slack-edge.com/T02AMEPGW3Y-U02B85M3T5L-ace78b319568-512" />
       </div>
       <div className="comments-right-part">
         <div className="comment-content">

@@ -25,38 +25,30 @@ function Comments({ currentUserId }) {
   };
   const addComment = (text, parentId) => {
     createComment(text, parentId).then((comment) => {
-      setBackendComments([comment, ...backendComments]);
+      getComment();
       setActiveComment(null);
     });
   };
 
   const deleteComment = (commentId) => {
     if (window.confirm("are you sure that you want to remove comment?")) {
-      deleteCommentapi(commentId).then(() => {
-        const updatedBackendComments = backendComments.filter(
-          (backendComment) => backendComment.id !== commentId
-        );
-        setBackendComments(updatedBackendComments);
-      });
+      deleteCommentapi(commentId).then(() => getComment());
     }
   };
   const updateComment = (text, commentId) => {
     updateCommentapi(text, commentId).then(() => {
-      const updatedBackendComments = backendComments.map((backendComment) => {
-        if (backendComment.id === commentId) {
-          return { ...backendComment, body: text };
-        }
-        return backendComment;
-      });
-      setBackendComments(updatedBackendComments);
+      getComment();
       setActiveComment(null);
     });
   };
   useEffect(() => {
+    getComment();
+  }, []);
+  const getComment = () => {
     getComments().then((data) => {
       setBackendComments(data);
     });
-  }, []);
+  };
   return (
     <div className="comments">
       <h3 className="comments-title">Comments</h3>

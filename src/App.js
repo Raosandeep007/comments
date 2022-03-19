@@ -1,11 +1,10 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Comments from "./components/comments/Comments";
 
 function App() {
   return (
     <div className="App">
-      <Comments currentUserId="1" />
+      <Comments currentUserId="7" />
     </div>
   );
 }
