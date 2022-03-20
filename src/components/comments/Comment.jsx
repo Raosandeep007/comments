@@ -30,7 +30,7 @@ function Comment({
   return (
     <div className="comment">
       <div className="comment-image-container">
-        <img src="https://ca.slack-edge.com/T02AMEPGW3Y-U02B85M3T5L-ace78b319568-512" />
+        {/* <img src="user-icon.png" /> */}
       </div>
       <div className="comments-right-part">
         <div className="comment-content">
