@@ -10,6 +10,7 @@ export const getComments = async () => {
 };
 
 export const createComment = async (text, parentId = null) => {
+  console.log('parentId:', parentId)
   const payload = {
     body: text,
     parentId,

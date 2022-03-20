@@ -23,8 +23,9 @@ function Comments({ currentUserId }) {
           new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       );
   };
-  const addComment = (text, parentId) => {
-    createComment(text, parentId).then((comment) => {
+  const addComment = (text, commentId) => {
+    createComment(text, commentId).then((comment) => {
+      
       getComment();
       setActiveComment(null);
     });
@@ -32,7 +33,9 @@ function Comments({ currentUserId }) {
 
   const deleteComment = (commentId) => {
     if (window.confirm("are you sure that you want to remove comment?")) {
-      deleteCommentapi(commentId).then(() => getComment());
+      deleteCommentapi(commentId)
+        .then(() => getComment())
+        .then(() => console.log("done"));
     }
   };
   const updateComment = (text, commentId) => {
