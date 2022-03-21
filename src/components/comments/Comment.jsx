@@ -40,7 +40,7 @@ function Comment({
         {!isEditing && <div className="comment-text">{comment.body}</div>}
         {isEditing && (
           <CommentForm
-            submitLable="Update"
+            submitLabel="Update"
             hasCancelButton
             initialText={comment.body}
             handleSubmit={(text) => updateComment(text, comment.id)}
@@ -79,7 +79,7 @@ function Comment({
         </div>
         {isReplying && (
           <CommentForm
-            submitLable="Reply"
+            submitLabel="Reply"
             handleSubmit={(text) => addComment(text, replyId)}
           />
         )}
