@@ -15,7 +15,7 @@ export const createComment = async (text, parentId = null) => {
     body: text,
     parentId,
     userId: "7",
-    username: "sandeep",
+    username: "Sandeep",
     createdAt: new Date().toISOString(),
   };
   await fetch(url, {
@@ -32,7 +32,7 @@ export const updateComment = async (text, id) => {
   const payload = {
     body: text,
     userId: "7",
-    username: "sandeep",
+    username: "Sandeep",
     createdAt: new Date().toISOString(),
   };
   await fetch(`https://shadow-glittery-bosworth.glitch.me/comments/${id}`, {

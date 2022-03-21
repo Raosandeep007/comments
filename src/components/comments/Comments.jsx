@@ -1,10 +1,9 @@
-import { keyboard } from "@testing-library/user-event/dist/keyboard";
 import React, { useEffect, useState } from "react";
 import {
   getComments,
   createComment,
-  deleteComment as deleteCommentapi,
-  updateComment as updateCommentapi,
+  deleteComment as deleteCommentApi,
+  updateComment as updateCommentApi,
 } from "../Api/Api";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
@@ -25,7 +24,6 @@ function Comments({ currentUserId }) {
   };
   const addComment = (text, commentId) => {
     createComment(text, commentId).then((comment) => {
-      
       getComment();
       setActiveComment(null);
     });
@@ -33,13 +31,13 @@ function Comments({ currentUserId }) {
 
   const deleteComment = (commentId) => {
     if (window.confirm("are you sure that you want to remove comment?")) {
-      deleteCommentapi(commentId)
+      deleteCommentApi(commentId)
         .then(() => getComment())
         .then(() => console.log("done"));
     }
   };
   const updateComment = (text, commentId) => {
-    updateCommentapi(text, commentId).then(() => {
+    updateCommentApi(text, commentId).then(() => {
       getComment();
       setActiveComment(null);
     });

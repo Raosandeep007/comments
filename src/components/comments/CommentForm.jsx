@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function CommentForm({
   handleSubmit,
-  submitLable,
+  submitLabel,
   hasCancelButton = false,
   initialText = "",
   handleCancel,
@@ -22,7 +22,7 @@ function CommentForm({
         className="comment-form-textarea"
       />
       <button className="comment-form-button" disabled={isTextareaDisabled}>
-        {submitLable}
+        {submitLabel}
       </button>
       {hasCancelButton && (
         <button
